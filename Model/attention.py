@@ -87,10 +87,6 @@ class SynthesizerAttention(nn.Module):
 
     def forward(self, x, layer_past=None):
 
-        ###   - Paste over the CausalSelfAttention above and modify it minimally.
-        ###   - Consider especially the parameters self.w1, self.w2 and self.b2.
-        ###       How do these map to the matrices in the handout?
-
         # get shape of x for y resembling
         B, T, C = x.size()
         

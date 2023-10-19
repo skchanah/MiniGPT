@@ -33,23 +33,6 @@ def finetune(reading_params_path, finetune_corpus_path, pretrain_dataset, block_
     ###         into the model
     ###     2. Finetune the model on this corpus
     ###
-    ### - Make sure to use the following hyperparameters:
-    ###     Hyperparameters for finetuning WITHOUT a pretrained model:
-    ###         max_epochs=75
-    ###         batch_size=256
-    ###         learning_rate=6e-4
-    ###         lr_decay=True
-    ###         warmup_tokens=512*20
-    ###         final_tokens=200*len(pretrain_dataset)*block_size
-    ###         num_workers=4
-    ###     Hyperparameters for finetuning WITH a pretrained model:
-    ###         max_epochs=10
-    ###         batch_size=256
-    ###         learning_rate=6e-4
-    ###         lr_decay=True
-    ###         warmup_tokens=512*20
-    ###         final_tokens=200*len(pretrain_dataset)*block_size
-    ###         num_workers=4
     ###
     ###
     ### Note: Please use torch.load(reading_params_path, map_location=torch.device('cpu')) to load pretrained model 
@@ -65,7 +48,7 @@ def finetune(reading_params_path, finetune_corpus_path, pretrain_dataset, block_
                                   lr_decay=True,
                                   warmup_tokens=512 * 20,
                                   final_tokens=200 * len(pretrain_dataset) * block_size,
-                                  num_workers=0)
+                                  num_workers=4) # or num_workers = 0
     
     # finetuning with pretrain
     else: 
@@ -76,7 +59,7 @@ def finetune(reading_params_path, finetune_corpus_path, pretrain_dataset, block_
                                   lr_decay=True,
                                   warmup_tokens=512 * 20,
                                   final_tokens=200 * len(pretrain_dataset) * block_size,
-                                  num_workers=0)
+                                  num_workers=4) # or num_workers = 0
     dataset = NameDataset(open(finetune_corpus_path, encoding="utf-8").read(), pretrain_dataset)
     trainer_obj = Trainer(model, dataset, None, tconf)
     return tconf, trainer_obj
@@ -86,15 +69,7 @@ def pretrain(pretrain_dataset, block_size, model):
     ###     1. A corpus specified in pretrain_corpus_path
     ### - Goals:
     ###     1. Pretrain the model on this corpus
-    ###
-    ### - Make sure to use the following hyperparameters for pretraining:
-    ###     max_epochs=650
-    ###     batch_size=128
-    ###     learning_rate=6e-3
-    ###     lr_decay=True
-    ###     warmup_tokens=512*20
-    ###     final_tokens=200*len(pretrain_dataset)*block_size
-    ###     num_workers=4
+
 
     trainer_obj = None #Trainer object (see trainer.py for more details)
     tconf = None #TrainerConfig object (see trainer.py for more details)
@@ -105,7 +80,7 @@ def pretrain(pretrain_dataset, block_size, model):
                           lr_decay=True,
                           warmup_tokens=512 * 20,
                           final_tokens=200 * len(pretrain_dataset) * block_size,
-                          num_workers=0)
+                          num_workers=4) # or num_workers = 0
     trainer_obj = Trainer(model, pretrain_dataset, None, tconf)
     return tconf, trainer_obj
 

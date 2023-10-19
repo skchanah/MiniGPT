@@ -1,4 +1,4 @@
-""" Utilities; we suggest changing none of these functions
+""" Utilities; we suggest changing none of these functions. For predictions and evaluations.
 
 but feel free to add your own.
 """

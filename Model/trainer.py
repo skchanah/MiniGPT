@@ -47,6 +47,7 @@ class Trainer:
         self.config = config
 
         # take over whatever gpus are on the system
+        # cuda friendly
         self.device = 'cpu'
         if torch.cuda.is_available():
             self.device = torch.cuda.current_device()

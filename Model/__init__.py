@@ -1,3 +1,6 @@
+"""
+Model files
+"""
 from .model import GPT, GPTConfig
 from .dataset import NameDataset, CharCorruptionDataset
 from .trainer import Trainer, TrainerConfig
