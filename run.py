@@ -25,7 +25,7 @@ from torch.nn import functional as F
 import random
 random.seed(0)
 
-from submission import (
+from Model import (
     GPT, GPTConfig, CharCorruptionDataset, NameDataset, TrainerConfig, Trainer, 
     evaluate_places, sample, initialize_vanilla_model, initialize_synthesizer_model,
     finetune, pretrain, train
