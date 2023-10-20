@@ -5,6 +5,7 @@ Adopted from Assignment from course CS224N, Stanford University
 This GPT-like model is highly simplified and aimed to predict the birthplace of a target based on a given corpus.
 
 ## Main Directory
+
 ***environment.yml / .environment_gpu.yml***: Environments for cpu and gpu
 ***run.py / run.sh***: .py and .sh runfiles
 
