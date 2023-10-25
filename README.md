@@ -2,7 +2,7 @@
 
 Adopted from Assignment from course CS224N, Stanford University 
 
-This GPT-1-like model is highly simplified and aimed to predict the origin of a target based on a given corpus.
+This GPT-1-like model is highly simplified and designed to predict the origin of a target based on a given corpus. (Pre-)Training objectives of current GPT models, except random deletion, are dropped to compact the training.
 
 ## Main Directory
 
